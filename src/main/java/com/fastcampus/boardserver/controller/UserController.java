@@ -1,5 +1,6 @@
 package com.fastcampus.boardserver.controller;
 
+import com.fastcampus.boardserver.aop.LoginCheck;
 import com.fastcampus.boardserver.dto.UserDTO;
 import com.fastcampus.boardserver.dto.request.UserDeleteId;
 import com.fastcampus.boardserver.dto.request.UserLoginRequest;
@@ -95,18 +96,18 @@ public class UserController {
      * 유저가 로그인 한 후 비밀번호 변경
      */
     @PatchMapping("/password")
+    @LoginCheck(type = LoginCheck.UserType.USER)
     public ResponseEntity<LoginResponse> updateUserPassword(
-            @RequestBody UserUpdatePasswordRequest userUpdatePasswordRequest,
-            HttpSession session
+            String accountId,
+            @RequestBody UserUpdatePasswordRequest userUpdatePasswordRequest
     ) {
         ResponseEntity<LoginResponse> responseEntity = null;
         LoginResponse loginResponse = null;
-        String id = SessionUtil.getLoginMemberId(session);
         String beforePassword = userUpdatePasswordRequest.getBeforePassword();
         String afterPassword = userUpdatePasswordRequest.getAfterPassword();
 
         try {
-            userService.updatePassword(id, beforePassword, afterPassword);
+            userService.updatePassword(accountId, beforePassword, afterPassword);
             responseEntity = new ResponseEntity<LoginResponse>(loginResponse, HttpStatus.OK);
         } catch (IllegalArgumentException e) {
             log.error("updatePassword 실패", e);
