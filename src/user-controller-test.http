@@ -19,7 +19,7 @@ Content-Type: application/json
 
 {
   "userId": "jinan",
-  "password": "123"
+  "password": "1234"
 }
 
 ### 유저 로그인 후 정보 조회 (로그인 후에 호출해야함)
@@ -47,3 +47,23 @@ Content-Type: application/json
   "id": "jinan",
   "password": "1234"
 }
+
+### 카테고리 생성 (관리자만 가능)
+POST http://localhost:8080/categories
+Content-Type: application/json
+
+{
+  "name": "중고거래1"
+}
+
+### 카테고리 수정 (관리자만 가능)
+PATCH http://localhost:8080/categories/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "중고거래 수정"
+}
+
+### 카테고리 삭제 (관리자만 가능)
+DELETE http://localhost:8080/categories/1
