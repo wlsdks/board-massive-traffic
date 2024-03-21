@@ -22,12 +22,19 @@ repositories {
 }
 
 dependencies {
+	// mvc, lombok 추가
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
-
-	runtimeOnly 'com.mysql:mysql-connector-j'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+
+	// mybatis, aop 추가
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '3.2.3'
+
+	// db
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	// test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
