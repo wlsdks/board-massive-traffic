@@ -1,0 +1,49 @@
+### 유저 회원가입
+POST http://localhost:8080/users/sign-up
+Content-Type: application/json
+
+{
+  "id": 0,
+  "userId": "jinan",
+  "password": "123",
+  "nickName": "test",
+  "createTime": "2024-03-21T19:55:29.500",
+  "isWithdraw": "false",
+  "isAdmin": "false",
+  "status": "DEFAULT"
+}
+
+### 유저 로그인
+POST http://localhost:8080/users/sign-in
+Content-Type: application/json
+
+{
+  "userId": "jinan",
+  "password": "123"
+}
+
+### 유저 로그인 후 정보 조회 (로그인 후에 호출해야함)
+GET http://localhost:8080/users/my-info
+
+
+### 유저 비밀번호 변경
+PATCH http://localhost:8080/users/password
+Content-Type: application/json
+
+{
+  "beforePassword": "123",
+  "afterPassword": "1234"
+}
+
+### 유저 로그아웃
+PUT http://localhost:8080/users/logout
+Content-Type: application/x-www-form-urlencoded
+
+### 유저 삭제
+DELETE http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "id": "jinan",
+  "password": "1234"
+}
