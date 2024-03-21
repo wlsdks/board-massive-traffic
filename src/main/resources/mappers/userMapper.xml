@@ -8,7 +8,7 @@
     <select id="getUserProfile" resultType="com.fastcampus.boardserver.dto.UserDTO">
         SELECT id, userId, password, nickName, createTime, isWithDraw, status
         FROM user
-        WHERE id = #{id}
+        WHERE userId = #{userId}
     </select>
 
     <insert id="insertUserProfile" parameterType="com.fastcampus.boardserver.dto.UserDTO">
@@ -41,11 +41,12 @@
                userId,
                passWord,
                nickName,
+               isAdmin,
                createTime,
                isWithDraw,
                status
         FROM user
-        WHERE id = #{id}
+        WHERE userId = #{id}
           AND passWord = #{password}
           AND status != 'DELETE'
     </select>
