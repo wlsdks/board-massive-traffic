@@ -67,6 +67,7 @@ public class CategoryController {
 
     /**
      * --- request 객체를 inner 클래스로 선언 ---
+     * 내부 클래스로 선언함으로써, CategoryRequest의 사용 범위를 CategoryController 내로 한정지었다.
      * 이렇게 하면 외부에서는 접근해서 사용할 수 없다는 장점이 있다.
      */
     @Getter
