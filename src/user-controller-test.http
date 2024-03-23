@@ -126,3 +126,14 @@ Content-Type: application/json
 
 ### 게시글 삭제
 DELETE http://localhost:8080/posts/3
+
+### 게시글 검색
+POST http://localhost:8080/search
+Content-Type: application/json
+
+{
+  "name": "te",
+  "contents": "test",
+  "categoryId": 1,
+  "sortStatus": "CATEGORIES"
+}
