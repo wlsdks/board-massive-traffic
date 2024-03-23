@@ -1,4 +1,4 @@
-### 유저 회원가입
+### 유저 회원가입 (회원)
 POST http://localhost:8080/users/sign-up
 Content-Type: application/json
 
@@ -13,13 +13,37 @@ Content-Type: application/json
   "status": "DEFAULT"
 }
 
-### 유저 로그인
+### 유저 회원가입 (관리자)
+POST http://localhost:8080/users/sign-up
+Content-Type: application/json
+
+{
+  "id": 1,
+  "userId": "admin",
+  "password": "123",
+  "nickName": "admin",
+  "createTime": "2024-03-21T19:55:29.500",
+  "isWithdraw": "false",
+  "isAdmin": "true",
+  "status": "ADMIN"
+}
+
+### 유저 로그인 (회원)
 POST http://localhost:8080/users/sign-in
 Content-Type: application/json
 
 {
   "userId": "jinan",
-  "password": "1234"
+  "password": "123"
+}
+
+### 유저 로그인 (관리자)
+POST http://localhost:8080/users/sign-in
+Content-Type: application/json
+
+{
+  "userId": "admin",
+  "password": "123"
 }
 
 ### 유저 로그인 후 정보 조회 (로그인 후에 호출해야함)
@@ -67,3 +91,38 @@ Content-Type: application/json
 
 ### 카테고리 삭제 (관리자만 가능)
 DELETE http://localhost:8080/categories/1
+
+### 게시글 생성
+POST http://localhost:8080/posts/register
+Content-Type: application/json
+
+{
+  "id": 0,
+  "name": "test",
+  "isAdmin": 0,
+  "contents": "test1",
+  "createTime": "2024-03-23T19:55:29.500",
+  "views": 0,
+  "categoryId": 1,
+  "userId": 0,
+  "fileId": 1,
+  "updateTime": "2024-03-23T19:55:29.500"
+}
+
+### 게시글 조회
+GET http://localhost:8080/posts/my-posts
+
+### 게시글 수정
+PATCH http://localhost:8080/posts/3
+Content-Type: application/json
+
+{
+  "name": "테스트 수정",
+  "contents": "콘텐츠 수정",
+  "categoryId": 1,
+  "fileId": 1,
+  "updateTime": "2024-03-23T19:55:29.500"
+}
+
+### 게시글 삭제
+DELETE http://localhost:8080/posts/3
