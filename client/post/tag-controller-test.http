@@ -1,0 +1,28 @@
+### 태그 추가
+POST http://localhost:8080/posts/tags
+Content-Type: application/json
+
+{
+  "name": "개발 블로그",
+  "url": "http://devblog.com",
+  "postId": 1
+}
+
+### 태그 수정
+PATCH http://localhost:8080/posts/tags/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "태그 수정",
+  "url": "수정된 태그주소",
+  "postId": 1
+}
+
+### 태그 삭제
+DELETE http://localhost:8080/posts/tags/1
+Content-Type: application/json
+
+{
+  "id": 1
+}

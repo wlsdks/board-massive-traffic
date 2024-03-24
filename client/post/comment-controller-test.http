@@ -1,0 +1,28 @@
+### 댓글 추가
+POST http://localhost:8080/posts/comments
+Content-Type: application/json
+
+{
+  "postId": 1,
+  "contents": "테스트 댓글 작성1",
+  "subCommentId": null
+}
+
+### 댓글 수정
+PATCH http://localhost:8080/posts/comments/20
+Content-Type: application/json
+
+{
+  "id": 20,
+  "postId": 1,
+  "contents": "테스트 댓글 수정1",
+  "subCommentId": null
+}
+
+### 댓글 삭제
+DELETE http://localhost:8080/posts/comments/20
+Content-Type: application/json
+
+{
+  "id": 20
+}
