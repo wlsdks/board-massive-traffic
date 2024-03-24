@@ -20,7 +20,12 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public void register(String accountId, CategoryDTO categoryDTO) {
         if (accountId != null) {
-            categoryMapper.register(categoryDTO);
+            try {
+                categoryMapper.register(categoryDTO);
+            } catch (RuntimeException e) {
+                log.error("register Error! {}", categoryDTO);
+                throw new RuntimeException("register Error! 게시글 카테고리 등록 메서드를 확인해주세요." + categoryDTO);
+            }
         } else {
             log.error("register Error! {}", categoryDTO);
             throw new RuntimeException("register Error! 게시글 카테고리 등록 메서드를 확인해주세요." + categoryDTO);
@@ -33,7 +38,12 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public void update(CategoryDTO categoryDTO) {
         if (categoryDTO != null) {
-            categoryMapper.updateCategory(categoryDTO);
+            try {
+                categoryMapper.updateCategory(categoryDTO);
+            } catch (RuntimeException e) {
+                log.error("update Error! {}", categoryDTO);
+                throw new RuntimeException("update Error! 게시글 카테고리 수정 메서드를 확인해주세요." + categoryDTO);
+            }
         } else {
             log.error("update Error! {}", categoryDTO);
             throw new RuntimeException("update Error! 게시글 카테고리 수정 메서드를 확인해주세요." + categoryDTO);
@@ -46,7 +56,12 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public void delete(int CategoryId) {
         if (CategoryId != 0) {
-            categoryMapper.deleteCategory(CategoryId);
+            try {
+                categoryMapper.deleteCategory(CategoryId);
+            } catch (RuntimeException e) {
+                log.error("delete Error! {}", CategoryId);
+                throw new RuntimeException("delete Error! 게시글 카테고리 삭제 메서드를 확인해주세요." + CategoryId);
+            }
         } else {
             log.error("delete Error! {}", CategoryId);
             throw new RuntimeException("delete Error! 게시글 카테고리 삭제 메서드를 확인해주세요." + CategoryId);
