@@ -33,4 +33,18 @@ public class PostSearchServiceImpl implements PostSearchService {
         return postDTOList;
     }
 
+    /**
+     * 태그로 게시글 검색
+     */
+    @Override
+    public List<PostDTO> getPostsByTag(String tagName) {
+        List<PostDTO> postDTOList = null;
+        try {
+            postDTOList = postSearchMapper.getPostByTag(tagName);
+        } catch (Exception e) {
+            log.error("getPostByTag 메서드 실패", e.getMessage());
+        }
+        return postDTOList;
+    }
+
 }
