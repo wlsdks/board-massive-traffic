@@ -1,0 +1,45 @@
+### 게시글 생성
+POST http://localhost:8080/posts/register
+Content-Type: application/json
+
+{
+  "id": 0,
+  "name": "test",
+  "isAdmin": 0,
+  "contents": "test1",
+  "createTime": "2024-03-23T19:55:29.500",
+  "views": 0,
+  "categoryId": 1,
+  "userId": 0,
+  "fileId": 1,
+  "tagDTOList": [
+    {
+      "name": "자유 게시판1",
+      "url": "127.0.0.1"
+    },
+    {
+      "name": "자유 게시판2",
+      "url": "127.0.0.1"
+    }
+  ],
+  "updateTime": "2024-03-23T19:55:29.500"
+}
+
+### 게시글 조회
+GET http://localhost:8080/posts/my-posts
+
+### 게시글 수정
+PATCH http://localhost:8080/posts/3
+Content-Type: application/json
+
+{
+  "name": "테스트 수정",
+  "contents": "콘텐츠 수정",
+  "categoryId": 1,
+  "fileId": 1,
+  "updateTime": "2024-03-23T19:55:29.500"
+}
+
+### 게시글 삭제
+DELETE http://localhost:8080/posts/3
+

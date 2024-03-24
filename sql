@@ -9,7 +9,8 @@ create table if not exists board.tag
 (
     id   int auto_increment
         primary key,
-    name varchar(45) not null
+    name varchar(45)  not null,
+    url  varchar(255) null
 );
 
 create table if not exists board.user
