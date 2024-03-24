@@ -15,6 +15,10 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
+	// logback 제외
+	all {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	}
 }
 
 repositories {
@@ -31,9 +35,12 @@ dependencies {
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '3.2.3'
 
-	// db
+	// mysql, redis
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+	// log4j2
+	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 
 	// test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
