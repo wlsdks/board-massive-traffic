@@ -1,4 +1,4 @@
-### 게시글 생성
+### 게시글 등록
 POST http://localhost:8080/posts/register
 Content-Type: application/json
 
